@@ -8,16 +8,20 @@ const history = createHistory()
 /*
  全局导入less
  */
+import './iconfont/iconfont.css'
+import './app.less'
+
 import * as indexList from 'actions/indexList';
+import * as global from 'actions/global';
 import { asyncComponent } from './AsyncComponent'
 
-import IndexList from 'containers/IndexList/IndexList'
+import Topic from 'containers/Topic';
 
 //const Topic = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Topic/Topic"))
 
 @connect (
     state => state,
-    dispatch => bindActionCreators({...indexList}, dispatch)
+    dispatch => bindActionCreators({...global}, dispatch)
 )
 export default class App extends React.Component {
     render() {
@@ -26,8 +30,7 @@ export default class App extends React.Component {
                   <Route render={({ location }) => {
                       return(
                         <div key={location.pathname}>
-                            <Route location={location} exact path="/" component={IndexList} />
-                            
+                            <Route location={location} exact path="/" component={Topic} />
                         </div>
                       )
                   }}/>

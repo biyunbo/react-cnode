@@ -31,7 +31,7 @@ FastClick.attach(document.body);
 const middlewares = [thunk, middleware];
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)));
-
+console.log(store)
 const render = Component =>
     ReactDOM.render(
         <AppContainer>

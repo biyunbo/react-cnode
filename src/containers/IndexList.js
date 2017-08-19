@@ -21,9 +21,10 @@ export default class HomeContainer extends React.Component {
     }
 
     componentWillMount() {
-        const { listMain } = this.props.indexList
-        if (listMain.length === 0) {
-            this.props.getList();
+    	console.log(this.props)
+        const { topics } = this.props.indexList.tabData
+        if (topics.length === 0) {
+            this.props.getList("job");
         }
     }
 
@@ -32,10 +33,15 @@ export default class HomeContainer extends React.Component {
         // this.props.history.push('/')
     }
     render() {
-    	const { listMain } = this.props.indexList
-    	console.log(listMain)
     	return(
     		<div>indexList</div>
     	)
     }
 }
+
+// function Topic (state){
+// 	return{
+// 		state : state
+// 	}
+// }
+// export default connect(Topic,indexList)(HomeContainer)
