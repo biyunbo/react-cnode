@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Route, HashRouter as Router } from 'react-router-dom';
+import {NavLink, Route, HashRouter as Router } from 'react-router-dom';
 import createHistory from 'history/createHashHistory';
 const history = createHistory()
 
@@ -10,14 +10,17 @@ const history = createHistory()
  */
 import './iconfont/iconfont.css'
 import './app.less'
+import './components/IndexList/index.less'
+import './components/Topic/index.less'
 
 import * as indexList from 'actions/indexList';
 import * as global from 'actions/global';
-import { asyncComponent } from './AsyncComponent'
+import { asyncComponent } from './AsyncComponent';
 
-import Topic from 'containers/Topic';
+import IndexList from 'containers/IndexList';
+import {Footer} from 'components/Common/Index';
 
-//const Topic = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Topic/Topic"))
+const Topic = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Topic"))
 
 @connect (
     state => state,
@@ -29,12 +32,16 @@ export default class App extends React.Component {
               <Router history={history}>
                   <Route render={({ location }) => {
                       return(
-                        <div key={location.pathname}>
-                            <Route location={location} exact path="/" component={Topic} />
+                        <div key={location.pathname} className="box">
+                            <Route location={location} exact path="/" component={IndexList} />
+                            <Route location={location} exact path="/Topic/:id" component={Topic} />
+                            <Footer />
                         </div>
                       )
                   }}/>
+                  
               </Router>
+
         );
     }
 }

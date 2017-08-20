@@ -7,8 +7,7 @@ import queryString from 'query-string';
 //action
 import * as indexList from 'actions/indexList';
 
-
-export default class Header extends React.Component {
+export default class List extends React.Component {
 	constructor(props) {
         super(props);
         //构造函数用法
@@ -26,16 +25,32 @@ export default class Header extends React.Component {
     handleClick() {
         //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
         // this.props.history.push('/')
-        history.go(-1);
     }
     render() {
+        let { id, title, author, visit_count, reply_count, create_at, last_reply_at, good, top } = this.props
     	return(
-            <div className="top">
-                <div className="fanhui" onClick={this.handleClick}>
-                    <i className="iconfont icon-fanhui"></i>
+            <Link to={`/Topic/${id}`} className="list clear">
+                <div className="img">
+                    <img src={author.avatar_url} />
                 </div>
-                <div className="title">详情</div>
-            </div>     
+                <div className="text">
+                    <div className="li1">
+                        <p>
+                            {
+                                top && <span className="ding">顶</span>
+                            }
+                            {
+                                top && <span className="jing">精</span>
+                            }
+                            {title}
+                        </p>
+                    </div>
+                    <div className="li2">
+                        <div>{reply_count}/{visit_count}分享</div>
+                        <div>{create_at.substring(0,10)}</div>
+                    </div>
+                </div>
+            </Link>
     	)
     }
 }

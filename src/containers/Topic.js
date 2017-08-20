@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 /*actions*/
-import * as indexList from 'actions/indexList';
-import Header from 'components/Topic/Header'
+import * as topic from 'actions/topic';
+
+/*组件*/
+import Header from 'components/Topic/Header';
+import List from 'components/IndexList/List';
+
 
 @connect(
     state => state,
-    dispatch => bindActionCreators({...indexList}, dispatch)
+    dispatch => bindActionCreators({...topic}, dispatch)
 )
 export default class HomeContainer extends React.Component {
 	constructor(props) {
@@ -21,55 +25,28 @@ export default class HomeContainer extends React.Component {
     }
 
     componentWillMount() {
-        let {selectedTab} = this.props.indexList;
-        let { topics } = this.props.indexList.tabData;
-        console.log(this.props.indexList)
-        if (topics.length === 0) {
-            this.props.getList(selectedTab);
+        let {id} = this.props.match.params
+        let {topic , getArticle} = this.props
+        if(!isEmpty(topic)){
+            getArticle(id)
         }
+
     }
     componentWillReceiveProps(newProps) {
-        if (newProps.location.search !== this.props.location.search) {
-            //url改变
-            let tab = queryString.parse(this.props.history.location.search).tab || 'all';
-            //newProps.selectTab(tab)
-            // this.props.selectTab(tab);
-            // let {selectedTab} = newProps.indexList;
-            this.props.getList(tab);
-        }
-        // //url改变
-        // let tab = queryString.parse(this.props.history.location.search).tab || 'all';
-        // this.props.selectTab(tab);
-        // if (newProps.indexList.selectedTab !== this.props.indexList.selectedTab) {
-        //     let {selectedTab} = newProps.indexList;
-        //     this.props.getList(selectedTab);
-        // }
+        
     }
     handleClick() {
         //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
         // this.props.history.push('/')
     }
     render() {
-        const { topics } = this.props.indexList.tabData;
-        console.log(this.props)
+        let {data} = this.props.topic.data
+        console.log(data)
     	return(
-            <div>
-            <Header {...this.props}/>
-            <div>
-                {
-                !isEmpty(topics) &&
-                topics.data.map((ele, index) => {
-                    return (
-                        <div key={index}>
-                        {ele.title}
-                        <i className="iconfont icon-fanhui"></i>
-                        </div>
-
-                    )
-                })
-                }
+            <div className="main">
+                <Header />
+                <div>{data.author.loginname}</div>
             </div>
-    		</div>
     	)
     }
 }

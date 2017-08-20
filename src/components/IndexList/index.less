@@ -1,0 +1,70 @@
+/*tab导航   Header*/
+.tab-nav{
+	width:100%;
+	height:30px;
+	flex-basis: 30px;
+    ul{
+    	width:100%;
+    	display: flex;
+	    flex-direction:row;
+	    justify-content:space-around;
+	    text-align: center;
+    	background:#fff;
+    	height:30px;
+	    li{
+	    	padding:5px;
+	    	border-bottom:3px solid #fff;
+	    	a{
+	    		color:#555;
+	    	}
+	    }
+	    .no{
+	    	border-bottom:3px solid #0f0;
+	    }
+    }
+}
+/*列表  List*/
+.list{
+	padding:10px;
+	display: flex;
+	flex-direction:row;
+	.img{
+		width:50px;
+		height:50px;
+	}
+	.text{
+		height: 50px;
+		padding-left: 5px;
+		flex: 1;
+		.li1{
+			overflow:hidden;
+			width: 100%;
+			height: 25px;
+			line-height: 25px;
+			text-overflow:ellipsis;
+			color:#555555;
+			display: flex;
+			flex-direction:row;
+			justify-content:space-between;
+			.ding{
+				font-weight: 600;
+				color: red;
+				margin:0 5px;
+			}
+			.jing{
+				font-weight: 600;
+				color: #436EEE;
+				margin:0 5px;
+			}
+		}
+		.li2{
+			color:#999;
+			width: 100%;
+			height: 25px;
+			line-height: 25px;
+			display: flex;
+			flex-direction:row;
+			justify-content:space-between;
+		}
+	}
+}

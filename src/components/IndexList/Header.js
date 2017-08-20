@@ -7,7 +7,6 @@ import queryString from 'query-string';
 //action
 import * as indexList from 'actions/indexList';
 
-
 export default class Header extends React.Component {
 	constructor(props) {
         super(props);
@@ -26,16 +25,29 @@ export default class Header extends React.Component {
     handleClick() {
         //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
         // this.props.history.push('/')
-        history.go(-1);
     }
     render() {
+        let tab = this.props.indexList.selectedTab;
     	return(
-            <div className="top">
-                <div className="fanhui" onClick={this.handleClick}>
-                    <i className="iconfont icon-fanhui"></i>
-                </div>
-                <div className="title">详情</div>
-            </div>     
+            <nav className="tab-nav">
+                <ul>
+                    <li className={tab == "all" ? "no":""}>
+                        <Link to="/">全部</Link>
+                    </li>
+                    <li className={tab == "good" ? "no":""}>
+                        <Link to="/?tab=good">精华</Link>
+                    </li>
+                    <li className={tab == "share" ? "no":""}>
+                        <Link to="/?tab=share">分享</Link>
+                    </li>
+                    <li className={tab == "ask" ? "no":""}>
+                        <Link to="/?tab=ask">问答</Link>
+                    </li>
+                    <li className={tab == "job" ? "no":""}>
+                        <Link to="/?tab=job">招聘</Link>
+                    </li>
+                </ul>
+            </nav>     
     	)
     }
 }
