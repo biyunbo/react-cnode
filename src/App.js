@@ -19,6 +19,7 @@ import { asyncComponent } from './AsyncComponent';
 
 import IndexList from 'containers/IndexList';
 import {Footer} from 'components/Common/Index';
+// import Topic from 'containers/Topic';
 
 const Topic = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Topic"))
 
@@ -34,7 +35,7 @@ export default class App extends React.Component {
                       return(
                         <div key={location.pathname} className="box">
                             <Route location={location} exact path="/" component={IndexList} />
-                            <Route location={location} exact path="/Topic/:id" component={Topic} />
+                            <Route location={location} path="/Topic/:id" component={Topic} />
                             <Footer />
                         </div>
                       )

@@ -37,6 +37,9 @@ export default class HomeContainer extends React.Component {
     componentWillReceiveProps(newProps) {
         //props改变触发此函数
         if (newProps.location.search !== this.props.location.search) {
+            if(this.mylistdiv != null){
+                this.mylistdiv.scrollTop = 0;
+            }
             //url改变
             let tab = queryString.parse(this.props.history.location.search).tab || 'all';
             //发起请求
@@ -75,16 +78,19 @@ export default class HomeContainer extends React.Component {
                 <Header {...this.props}/>
                 <div ref={(ref) => this.mylistdiv = ref} className="list-box" onScroll={this.scroll}>
                    <div ref={(ref) => this.mylist = ref} className="list-boxz">
-                       {
-                        tabData.isFecthing ? <Loading /> : !isEmpty(topics) &&topics.data.map((ele, index) => {
+                        {
+                            tabData.isFecthing && <Loading /> 
+                        }
+                        {
+                        !isEmpty(topics) &&topics.data.map((ele, index) => {
                                                                                 return (
                                                                                     <List key={index} {...ele} />
                                                                                 )
                                                                             })
-                       }
-                       {
+                        }
+                        {
                             !tabData.isFecthing && <Loading />
-                       }
+                        }
                        
                    </div>
                 </div>

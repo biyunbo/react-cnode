@@ -9,13 +9,14 @@ import * as topic from 'actions/topic';
 /*组件*/
 import Header from 'components/Topic/Header';
 import List from 'components/IndexList/List';
+import {Loading} from 'components/Common/Index';
 
 
 @connect(
     state => state,
     dispatch => bindActionCreators({...topic}, dispatch)
 )
-export default class HomeContainer extends React.Component {
+export default class Topic extends React.Component {
 	constructor(props) {
         super(props);
         //构造函数用法
@@ -40,12 +41,25 @@ export default class HomeContainer extends React.Component {
         // this.props.history.push('/')
     }
     render() {
-        let {data} = this.props.topic.data
+        let {data} = this.props.topic.data;
+        let {isFecthing} = this.props.topic;
         console.log(data)
+        var createMarkup = () => {
+            return {
+                __html: content
+            };
+        }
     	return(
             <div className="main">
                 <Header />
-                <div>{data.author.loginname}</div>
+                {
+                    isFecthing ? <Loading /> : !isEmpty(data) &&<div className="main">
+                        <div className='main-z'>
+                            <div className='markdown-body' dangerouslySetInnerHTML={{__html:data.content}}></div>
+                            <div>111111111</div>
+                        </div>
+                    </div>
+                }
             </div>
     	)
     }
