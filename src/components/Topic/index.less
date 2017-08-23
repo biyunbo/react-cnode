@@ -1,3 +1,6 @@
+@style-border:#ccc;
+@style-bg:#00C5CD;
+@name-color:#4aa84a;
 /*头部*/
 .top{
 	width: 100%;
@@ -6,7 +9,7 @@
     justify-content:space-between;
     height: 40px;
     line-height: 40px;
-    background: #00C5CD;
+    background: @style-bg;
     .fanhui{
     	padding-left: 10px;
     	i{
@@ -22,9 +25,57 @@
     }
 }
 
+/*文章头部*/
+.main-top{
+    .top1{
+        padding:5px 20px;
+        display: flex;
+        flex-direction:row;
+        justify-content:space-between;
+        border-bottom: 1px solid @style-border;
+        color: #555;
+        height: 25px;
+        line-height: 25px;
+        .left{
+            span{
+                color: @name-color;
+            }
+        }
+        .right{
+            color:#888888;
+        }
+    }
+    .top2{
+        padding:5px 20px;
+        border-bottom: 1px solid @style-border;
+        .p1{
+            font-size: 20px;
+            line-height: 30px;
+        }
+        .p2{
+            padding:5px 0;
+            display: flex;
+            flex-direction:row;
+            justify-content:space-between;
+            .left{
+                color: #d0d0d0;
+            }
+            .right{
+                width: 120px;
+                height: 30px;
+                background: @style-bg;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 30px;
+                color: #fff;
+            }
+        }
+    }
+}
+
 /*文章主题*/
 .markdown-body{
-    padding: 40px;
+    padding:5px 20px;
     a{  
         display: block;
         word-wrap:break-word;
@@ -49,5 +100,65 @@
     code{
     white-space: normal;  
     word-break: break-all;  
+    }
+}
+
+/*评论*/
+.comment{
+    .comment-top{
+        height: 40px;
+        background: #eee;
+        border-left: 15px solid @style-bg;
+        line-height: 40px;
+    }
+    .li{
+        margin-top: 10px;
+        border:1px solid @style-border;
+        .list1{
+            padding:10px 15px;
+            height: 50px;
+            display: flex;
+            flex-direction:row;
+            justify-content:space-between;
+            line-height: 50px;
+            .left{
+                display: flex;
+                flex-direction:row;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+                span{
+                    color:@name-color;
+                    padding-left: 10px;
+                }
+            }
+            .right{
+                color:@style-border;
+            }
+        }
+        .list2{
+            border-top: 1px solid @style-border;
+            padding:20px 15px;
+            .p1{
+                color: #555555;
+                font-size: 14px;
+            }
+            .p2{
+                margin-top: 20px;
+                display: flex;
+                flex-direction:row;
+                justify-content:space-between;
+                height: 30px;
+                line-height: 30px;
+                .right{
+                    i{
+                        margin: 0 10px;
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
     }
 }

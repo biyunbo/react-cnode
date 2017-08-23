@@ -22,9 +22,8 @@ export default class HomeContainer extends React.Component {
         //构造函数用法
         //常用来绑定自定义函数，切记不要在这里或者组件的任何位置setState，state全部在reducer初始化，相信对开发的后期很有帮助
         //例子：this.myfunction = this.myfunction.bind(this)
-        this.handleClick = this.handleClick.bind(this)
-        this.scroll = this.scroll.bind(this)
-        this.loadmore = this.loadmore.bind(this)
+        this.scroll = this.scroll.bind(this);
+        this.loadmore = this.loadmore.bind(this);
     }
 
     componentWillMount () {
@@ -37,18 +36,12 @@ export default class HomeContainer extends React.Component {
     componentWillReceiveProps(newProps) {
         //props改变触发此函数
         if (newProps.location.search !== this.props.location.search) {
-            if(this.mylistdiv != null){
-                this.mylistdiv.scrollTop = 0;
-            }
             //url改变
             let tab = queryString.parse(this.props.history.location.search).tab || 'all';
+             this.props.selectTab(tab);
             //发起请求
             this.props.getList(tab);
         }
-    }
-    handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
     }
     scroll() {
         if(this.mylistdiv != null){
@@ -64,7 +57,7 @@ export default class HomeContainer extends React.Component {
         let num = this.props.indexList.tabData.limit;
         num = num + 10;
         if (!tabData.isFecthing) {
-            this.props.recordScrollT(scrollT);
+            //this.props.recordScrollT(scrollT);
             this.props.getList(selectedTab,1,num);
         }
         
@@ -79,19 +72,11 @@ export default class HomeContainer extends React.Component {
                 <div ref={(ref) => this.mylistdiv = ref} className="list-box" onScroll={this.scroll}>
                    <div ref={(ref) => this.mylist = ref} className="list-boxz">
                         {
-                            tabData.isFecthing && <Loading /> 
+                            topics.length === 0 && <Loading /> 
                         }
                         {
-                        !isEmpty(topics) &&topics.data.map((ele, index) => {
-                                                                                return (
-                                                                                    <List key={index} {...ele} />
-                                                                                )
-                                                                            })
+                            !isEmpty(topics) && <List {...this.props} />
                         }
-                        {
-                            !tabData.isFecthing && <Loading />
-                        }
-                       
                    </div>
                 </div>
             </div>

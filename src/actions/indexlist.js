@@ -25,8 +25,7 @@ export const recordScrollT = (scrollT) =>({
 
 export const getList = (tab, page = 1, limit = 10) => async (dispatch, getState) => {
     dispatch(requestTopic(tab))
-    dispatch(selectTab(tab))
-    dispatch(recordScrollT())
+    //dispatch(recordScrollT())
     try {
         let response = await instance.get(`/topics?tab=${tab}&page=${page}&limit=${limit}`)
         await dispatch(receiveTopic(tab, response.data, page, limit))

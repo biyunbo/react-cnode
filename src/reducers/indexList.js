@@ -14,7 +14,11 @@ export function indexList(state = initNavList, action) {
 	switch (action.type) {
 		case 'SELECT_TAB':
 			return Object.assign({},state,{
-				selectedTab : action.tab
+				selectedTab : action.tab,
+				tabData : {
+					...state.tabData,
+					topics: []
+				}
 			})
 		case 'RECORD_SCROLLT':
 			return Object.assign({},state,{

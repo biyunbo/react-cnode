@@ -31,7 +31,7 @@ export default class Header extends React.Component {
     	return(
             <nav className="tab-nav">
                 <ul>
-                    <li className={tab == "all" ? "no":""}>
+                    <li className={tab == "all"  ? "no":""}>
                         <Link to="/">全部</Link>
                     </li>
                     <li className={tab == "good" ? "no":""}>

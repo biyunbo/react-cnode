@@ -19,9 +19,12 @@ import { asyncComponent } from './AsyncComponent';
 
 import IndexList from 'containers/IndexList';
 import {Footer} from 'components/Common/Index';
-// import Topic from 'containers/Topic';
+
 
 const Topic = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Topic"))
+const UserView = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/UserView"))
+const Publish = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Publish"))
+const Message = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Message"))
 
 @connect (
     state => state,
@@ -36,6 +39,9 @@ export default class App extends React.Component {
                         <div key={location.pathname} className="box">
                             <Route location={location} exact path="/" component={IndexList} />
                             <Route location={location} path="/Topic/:id" component={Topic} />
+                            <Route location={location} path="/Publish" component={Publish} />
+                            <Route location={location} path="/Message" component={Message} />
+                            <Route location={location} path="/UserView" component={UserView} />
                             <Footer />
                         </div>
                       )

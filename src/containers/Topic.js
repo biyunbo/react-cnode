@@ -3,13 +3,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
+
+import { formatDate } from 'utils/cookie';
+
 /*actions*/
 import * as topic from 'actions/topic';
 
 /*组件*/
 import Header from 'components/Topic/Header';
-import List from 'components/IndexList/List';
+import Comment from 'components/Topic/Comment';
 import {Loading} from 'components/Common/Index';
+
 
 
 @connect(
@@ -43,20 +47,35 @@ export default class Topic extends React.Component {
     render() {
         let {data} = this.props.topic.data;
         let {isFecthing} = this.props.topic;
-        console.log(data)
-        var createMarkup = () => {
-            return {
-                __html: content
-            };
-        }
     	return(
             <div className="main">
                 <Header />
                 {
                     isFecthing ? <Loading /> : !isEmpty(data) &&<div className="main">
                         <div className='main-z'>
+                            <div className="main-top">
+                                <div className="top1">
+                                    <div className="left">
+                                        作者：<span>{data.author.loginname}</span>
+                                    </div>
+                                    <div className="right">
+                                        发表于{formatDate(data.create_at)}
+                                    </div>
+                                </div>
+                                <div className="top2">
+                                    <div className="p1">{data.title}</div>
+                                    <div className="p2">
+                                        <div className="left">
+                                            浏览次数{data.visit_count}
+                                        </div>
+                                        <div className="right">
+                                            关注
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
                             <div className='markdown-body' dangerouslySetInnerHTML={{__html:data.content}}></div>
-                            <div>111111111</div>
+                            <Comment {...data} />
                         </div>
                     </div>
                 }

@@ -5,9 +5,16 @@ body, ul, li, a, p, h2, h3, textarea, button, input, select {
     list-style: none;
     text-decoration: none;
     border: none;
+    font-family: "微软雅黑";
     &:focus {
         outline: none;
     }
+}
+h2{
+    background-color: #eee;
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
 }
 body,html{
     width: 100%;
@@ -40,20 +47,20 @@ img {
     flex-direction:row;
     justify-content:space-around;
     text-align: center;
+    border-top: 1px solid #ccc;
     a{
         color: #555;
     }
     .active{
-        color:red;
+        color:#00C5CD;
     }
 }
 /*Loading正在加载*/
 .loading{
     text-align: center;
-    height: 100px;
     img{
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
     }
 }
 
