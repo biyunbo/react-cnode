@@ -7,17 +7,17 @@ import queryString from 'query-string';
 import { formatDate } from 'utils/cookie';
 
 /*actions*/
-import * as topic from 'actions/topic';
+import * as global from 'actions/global';
 
 /*组件*/
-import Header from 'components/Topic/Header';
 import Comment from 'components/Topic/Comment';
-import {Loading , Head} from 'components/Common/Index';
+import { Header } from 'components/Common/Index';
+import Login from 'containers/Login';
 
 
 @connect(
     state => state,
-    dispatch => bindActionCreators({...topic}, dispatch)
+    dispatch => bindActionCreators({...global}, dispatch)
 )
 export default class Userview extends React.Component {
 	constructor(props) {
@@ -27,12 +27,29 @@ export default class Userview extends React.Component {
 
 	}
 	render() {
+		let {success} = this.props.global
 		return(
 			<div className="main">
-				333
+			{
+				success ? <Main {...this.props} /> : <Login />
+			}
 			</div>
 		)
 	}
 }
 
+class Main extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	componentWillMount(){
 
+	}
+	render() {
+		return(
+			<div className="main">
+				<Header title="个人中心" leftto="kong"/>
+			</div>
+		)
+	}
+}

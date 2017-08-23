@@ -10,9 +10,7 @@ import { formatDate } from 'utils/cookie';
 import * as topic from 'actions/topic';
 
 /*组件*/
-import Header from 'components/Topic/Header';
-import Comment from 'components/Topic/Comment';
-import {Loading , Head} from 'components/Common/Index';
+import { Header,Nologin } from 'components/Common/Index';
 
 
 @connect(
@@ -27,9 +25,13 @@ export default class Message extends React.Component {
 
 	}
 	render() {
+		let {success} = this.props.global
 		return(
 			<div className="main">
-				222
+				<Header title="消息" leftto="kong"/>
+				{
+					success ? <Main /> : <Nologin />
+				}
 			</div>
 		)
 	}

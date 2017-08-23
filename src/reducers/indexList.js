@@ -1,5 +1,5 @@
 // 初始化状态
-let initNavList = {
+let Initialization = {
     selectedTab: 'all',
 	tabData: {
 		page: 0,
@@ -10,7 +10,7 @@ let initNavList = {
 	}
 }
 
-export function indexList(state = initNavList, action) {
+export function indexList(state = Initialization, action) {
 	switch (action.type) {
 		case 'SELECT_TAB':
 			return Object.assign({},state,{

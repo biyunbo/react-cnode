@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
+
 
 let loading = require('./img/loading.gif');
 
@@ -33,7 +34,7 @@ export class Footer extends React.Component {
     	)
     }
 }
-
+/*正在*/
 export class Loading extends React.Component {
     constructor(props) {
         super(props);
@@ -46,15 +47,54 @@ export class Loading extends React.Component {
         )
     }
 }
+/*公共头部*/
+export class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this)
+    }
 
-export class Head extends React.Component {
+    componentWillMount() {
+        //组件挂载前触发此函数
+    }
+    componentWillReceiveProps(newProps) {
+        //props改变触发此函数
+    }
+    handleClick() {
+        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
+        // this.props.history.push('/')
+        history.go(-1);
+    }
+    render() {
+        let { title,leftto } = this.props;
+        let left = null;
+        if(leftto == "kong"){
+            left = (<div></div>)
+        }else if(leftto == "fanhui"){
+            left = (
+                <div className="fanhui" onClick={this.handleClick}>
+                    <i className="iconfont icon-fanhui"></i>
+                </div>
+            )
+        }
+        return(
+            <div className="top">
+                {left}
+                <div className="title">{title}</div>
+            </div>     
+        )
+    }
+}
+
+/*未登录状态*/
+export class Nologin extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
         return(
-            <div className="loading">
-                <img src={loading} />
+            <div className="nologin">
+                您还未登录，<Link to="/Login">去登录~</Link>
             </div>
         )
     }

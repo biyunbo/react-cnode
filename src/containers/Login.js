@@ -8,31 +8,37 @@ import { formatDate } from 'utils/cookie';
 
 /*actions*/
 import * as global from 'actions/global';
+
 /*组件*/
-import { Header,Nologin } from 'components/Common/Index';
+import { Header } from 'components/Common/Index';
 
 
 @connect(
     state => state,
     dispatch => bindActionCreators({...global}, dispatch)
 )
-export default class Publish extends React.Component {
+export default class Login extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleClick = this.handleClick.bind(this)
 	}
 	componentWillMount(){
 
 	}
+	handleClick(){
+		let token = this.myvalue.value
+		this.props.postAccessToken(token);
+	}
 	render() {
-		let {success} = this.props.global
+		console.log(this.props)
 		return(
 			<div className="main">
-				<Header title="发布" leftto="kong"/>
-				{
-					success ? <Main /> : <Nologin />
-				}
+				<Header title="登录" leftto="kong"/>
+				<div className="denglu">
+					<input placeholder="cnode社区accesstoken" ref={(ref) => this.myvalue = ref} />
+					<div className="login" onClick={this.handleClick}>登录</div>
+				</div>
 			</div>
 		)
 	}
 }
-

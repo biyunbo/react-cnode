@@ -25,7 +25,7 @@ const Topic = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./con
 const UserView = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/UserView"))
 const Publish = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Publish"))
 const Message = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Message"))
-
+const Login = asyncComponent(() => import(/* webpackChunkName: "Topic" */ "./containers/Login"))
 @connect (
     state => state,
     dispatch => bindActionCreators({...global}, dispatch)
@@ -42,6 +42,7 @@ export default class App extends React.Component {
                             <Route location={location} path="/Publish" component={Publish} />
                             <Route location={location} path="/Message" component={Message} />
                             <Route location={location} path="/UserView" component={UserView} />
+                            <Route location={location} path="/Login" component={Login} />
                             <Footer />
                         </div>
                       )

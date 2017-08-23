@@ -10,9 +10,8 @@ import { formatDate } from 'utils/cookie';
 import * as topic from 'actions/topic';
 
 /*组件*/
-import Header from 'components/Topic/Header';
 import Comment from 'components/Topic/Comment';
-import {Loading} from 'components/Common/Index';
+import {Loading ,Header} from 'components/Common/Index';
 
 
 
@@ -49,7 +48,7 @@ export default class Topic extends React.Component {
         let {isFecthing} = this.props.topic;
     	return(
             <div className="main">
-                <Header />
+                <Header title="详情" leftto="fanhui" />
                 {
                     isFecthing ? <Loading /> : !isEmpty(data) &&<div className="main">
                         <div className='main-z'>
