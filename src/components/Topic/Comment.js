@@ -28,7 +28,6 @@ export default class Comment extends React.Component {
     }
     render() {
         let {reply_count,replies} = this.props
-        console.log(this.props)
     	return(
             <div className="comment">
                 <div className="comment-top">共{reply_count}条评论</div>

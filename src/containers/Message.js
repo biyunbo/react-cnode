@@ -36,3 +36,15 @@ export default class Message extends React.Component {
 		)
 	}
 }
+
+//消息主体
+class Main extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return(
+			<div>消息主体</div>
+		)
+	}
+}

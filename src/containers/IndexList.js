@@ -6,15 +6,18 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 /*actions*/
 import * as indexList from 'actions/indexList';
+import * as global from 'actions/global';
 
 /*组件*/
 import Header from 'components/IndexList/Header';
 import List from 'components/IndexList/List';
 import {Loading} from 'components/Common/Index';
 
+import { readData } from 'utils/cookie'
+
 @connect(
     state => state,
-    dispatch => bindActionCreators({...indexList}, dispatch)
+    dispatch => bindActionCreators({...indexList,...global}, dispatch)
 )
 export default class HomeContainer extends React.Component {
     constructor(props) {
@@ -29,6 +32,10 @@ export default class HomeContainer extends React.Component {
     componentWillMount () {
         let {selectedTab , tabData} = this.props.indexList;
         let { topics } = tabData;
+        //判断是否登录
+        if(readData("access_token")){
+            this.props.postAccessToken(readData("access_token"));
+        }
         if (topics.length === 0) {
             this.props.getList(selectedTab);
         }
@@ -65,7 +72,6 @@ export default class HomeContainer extends React.Component {
     render() {
         let { topics } = this.props.indexList.tabData;
         let { tabData } = this.props.indexList
-        console.log(this.props)
         return(
             <div className="main">
                 <Header {...this.props}/>

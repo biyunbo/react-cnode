@@ -8,48 +8,99 @@ import { formatDate } from 'utils/cookie';
 
 /*actions*/
 import * as global from 'actions/global';
+import * as user from 'actions/user';
 
 /*组件*/
-import Comment from 'components/Topic/Comment';
 import { Header } from 'components/Common/Index';
 import Login from 'containers/Login';
+import List from 'components/Userview/list';
+
 
 
 @connect(
     state => state,
-    dispatch => bindActionCreators({...global}, dispatch)
+    dispatch => bindActionCreators({...global,...user}, dispatch)
 )
 export default class Userview extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 	componentWillMount(){
-
+		let {success} = this.props.global
+		if(success){
+			this.props.getUser(this.props.global.loginname)
+		}
 	}
+	componentWillReceiveProps(nextProps){
+		if(nextProps.global.success !== this.props.global.success){
+			this.props.getUser(nextProps.global.loginname)
+		}
+	}
+	// componentDidMount(){
+	// 	console.log(success)
+	// 	let {success} = this.props.global
+	// 	if(success){
+	// 		console.log(2)
+	// 		this.props.getUser(this.props.global.loginname)
+	// 	}
+	// }
 	render() {
 		let {success} = this.props.global
-		console.log(this.props.global)
+		let {data} = this.props.user.data
+
 		return(
 			<div className="main">
 			{
-				success ? <Main {...this.props} /> : <Login />
+				success ? !isEmpty(data)&&<Main {...this.props} /> : <Login />
 			}
 			</div>
 		)
 	}
 }
 
+//个人中心主体
 class Main extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-	componentWillMount(){
-
-	}
 	render() {
+		let {avatar_url,create_at,loginname,score,recent_replies,recent_topics} = this.props.user.data.data
+		let {tab} = this.props.user
+		let cleft = "left"
+		let cright = "right"
+		if(tab == 1 ){
+			cleft+=" on"
+		}
+		if(tab == 2 ){
+			cright+=" on"
+		}
 		return(
-			<div className="main">
+			<div className="main usercenter">
 				<Header title="个人中心" leftto="kong"/>
+				<div className="main-z">
+					<div className="tou">
+						<img src={avatar_url} />
+					</div>
+					<div className="name">{loginname}</div>
+					<div className="personal">
+						<div className="left">
+							积分：{score}
+						</div>
+						<div className="right">
+							注册于：{formatDate(create_at)}
+						</div>
+					</div>
+					<div className="content">
+						<div className={cleft} onClick={() => { this.props.setTab(1) } }>主题</div>
+						<div className={cright} onClick={() => { this.props.setTab(2) } }>回复</div>
+					</div>
+					{
+						tab == 1 && <List list={recent_topics} />
+					}
+					{
+						tab == 2 && <List list={recent_replies} />
+					}
+				</div>
 			</div>
 		)
 	}

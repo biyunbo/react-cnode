@@ -25,7 +25,6 @@ export default class Publish extends React.Component {
 	}
 	render() {
 		let {success} = this.props.global
-		console.log(this.props.global)
 		return(
 			<div className="main">
 				<Header title="发布" leftto="kong"/>
@@ -37,3 +36,14 @@ export default class Publish extends React.Component {
 	}
 }
 
+//发布主体
+class Main extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		return(
+			<div>发布主体</div>
+		)
+	}
+}

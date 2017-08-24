@@ -12,6 +12,8 @@ import './iconfont/iconfont.css'
 import './app.less'
 import './components/IndexList/index.less'
 import './components/Topic/index.less'
+import './components/UserView/index.less'
+
 
 import * as indexList from 'actions/indexList';
 import * as global from 'actions/global';

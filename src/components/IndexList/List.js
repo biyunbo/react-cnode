@@ -22,7 +22,6 @@ export default class List extends React.Component {
     }
     render() {
         let {topics} = this.props.indexList.tabData;
-        console.log(this.props)
     	return(
             <div>
                 {

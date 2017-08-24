@@ -8,6 +8,7 @@ import { formatDate } from 'utils/cookie';
 
 /*actions*/
 import * as global from 'actions/global';
+import * as user from 'actions/user';
 
 /*组件*/
 import { Header } from 'components/Common/Index';
@@ -15,7 +16,7 @@ import { Header } from 'components/Common/Index';
 
 @connect(
     state => state,
-    dispatch => bindActionCreators({...global}, dispatch)
+    dispatch => bindActionCreators({...global,...user}, dispatch)
 )
 export default class Login extends React.Component {
 	constructor(props) {
@@ -30,7 +31,6 @@ export default class Login extends React.Component {
 		this.props.postAccessToken(token);
 	}
 	render() {
-		console.log(this.props)
 		return(
 			<div className="main">
 				<Header title="登录" leftto="kong"/>

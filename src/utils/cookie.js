@@ -3,7 +3,7 @@
 export function saveData(name, value, min) {
     if (min) {
         var date = new Date();
-        date.setTime(date.getTime() + (min * 60 * 1000));
+        date.setTime(date.getTime() + (min * 60 * 1000 ));
         var expires = "; expires=" + date.toUTCString();
     }
     else var expires = "";
@@ -24,7 +24,21 @@ export function readData(name) {
 export function removeData(name) {
     saveData(name, "", -1);
 }
-// 开发者还可以自定义保存localstorage或者其他缓存方式的通用方法
+// 保存localstorage
+export function localItem (key, value) {
+    if (arguments.length == 1) {
+        return localStorage.getItem(key);
+    } else {
+        return localStorage.setItem(key, value);
+    }
+}
+//  删除localstorage
+export function removeLocalItem (key) {
+    if (key) {
+        return localStorage.removeItem(key);
+    }
+    return localStorage.removeItem();
+}
 
 //时间格式化
 export function formatDate (str) {
@@ -46,3 +60,4 @@ export function formatDate (str) {
         return parseInt(time / 31536000000) + '年前';
     }
 }
+
