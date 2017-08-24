@@ -25,6 +25,7 @@ export default class Publish extends React.Component {
 	}
 	render() {
 		let {success} = this.props.global
+		console.log(this.props.global)
 		return(
 			<div className="main">
 				<Header title="发布" leftto="kong"/>

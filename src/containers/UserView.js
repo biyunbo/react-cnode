@@ -28,6 +28,7 @@ export default class Userview extends React.Component {
 	}
 	render() {
 		let {success} = this.props.global
+		console.log(this.props.global)
 		return(
 			<div className="main">
 			{

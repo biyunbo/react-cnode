@@ -9,8 +9,8 @@ export const successLogin = (accesstoken, loginname, id) => ({
 
 export const postAccessToken = (access_token) => async (dispatch, getState) =>{
 	try {
-		let response = await instance.post(`/${access_token}`)
-		await response.success ? dispatch(successLogin(access_token ,response.loginname ,response.id)):dispatch(failLogin(response.error_msg))
+		let response = await instance.post(`accesstoken/?accesstoken=${access_token}`)
+		await response.data.success ? dispatch(successLogin(access_token ,response.data.loginname ,response.data.id)):dispatch(failLogin(response.data.error_msg))
 	} catch(error) {
 		console.log('error: ', error)
 	}
