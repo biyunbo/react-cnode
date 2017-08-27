@@ -13,6 +13,7 @@ import './app.less'
 import './components/IndexList/index.less'
 import './components/Topic/index.less'
 import './components/UserView/index.less'
+import './components/Message/index.less'
 
 
 import * as indexList from 'actions/indexList';

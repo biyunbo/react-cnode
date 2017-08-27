@@ -9,6 +9,7 @@ import { AppContainer } from 'react-hot-loader';
 import App from './App';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers/index';
+import {createLogger} from 'redux-logger';
 
 var FastClick = require('fastclick');
 
@@ -25,10 +26,11 @@ window.isArray = isArray;
 
 const history = createHistory();
 const middleware = routerMiddleware(history)
+const logger = createLogger();
 
 //解决移动端300毫秒延迟
 FastClick.attach(document.body);
-const middlewares = [thunk, middleware];
+const middlewares = [thunk, middleware,logger];
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)));
 console.log(store)

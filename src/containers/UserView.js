@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 
-import { formatDate } from 'utils/cookie';
+import { formatDate,removeData } from 'utils/cookie';
 
 /*actions*/
 import * as global from 'actions/global';
@@ -24,6 +24,7 @@ import List from 'components/Userview/list';
 export default class Userview extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleClick = this.handleClick.bind(this)
 	}
 	componentWillMount(){
 		let {success} = this.props.global
@@ -36,14 +37,10 @@ export default class Userview extends React.Component {
 			this.props.getUser(nextProps.global.loginname)
 		}
 	}
-	// componentDidMount(){
-	// 	console.log(success)
-	// 	let {success} = this.props.global
-	// 	if(success){
-	// 		console.log(2)
-	// 		this.props.getUser(this.props.global.loginname)
-	// 	}
-	// }
+	handleClick(){
+		this.props.loginOut();
+		removeData("access_token");
+	}
 	render() {
 		let {success} = this.props.global
 		let {data} = this.props.user.data
@@ -51,7 +48,7 @@ export default class Userview extends React.Component {
 		return(
 			<div className="main">
 			{
-				success ? !isEmpty(data)&&<Main {...this.props} /> : <Login />
+				success ? !isEmpty(data)&&<Main {...this.props} handleClick={this.handleClick} /> : <Login />
 			}
 			</div>
 		)
@@ -66,6 +63,7 @@ class Main extends React.Component {
 	render() {
 		let {avatar_url,create_at,loginname,score,recent_replies,recent_topics} = this.props.user.data.data
 		let {tab} = this.props.user
+		let handleClick = this.props.handleClick
 		let cleft = "left"
 		let cright = "right"
 		if(tab == 1 ){
@@ -100,6 +98,7 @@ class Main extends React.Component {
 					{
 						tab == 2 && <List list={recent_replies} />
 					}
+					<div className="out" onClick={handleClick}>退出</div>
 				</div>
 			</div>
 		)

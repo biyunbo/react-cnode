@@ -163,5 +163,105 @@ img {
         }
         
     }
+    .out{
+        width: 50px;
+        height: 50px;
+        background: #00C5CD;
+        position: fixed;
+        bottom: 75px;
+        right: 30px;
+        text-align: center;
+        border-radius: 15px;
+        line-height: 50px;
+    }
 }
 
+/*消息*/
+.message{
+    .top{
+        display: flex;
+        flex-direction:row;
+        justify-content:center;
+        font-size: 16px;
+        text-align: center;
+        height: 40px;
+        background: #efefef;
+        line-height: 38px;
+        .left{
+            width: 50%;
+            height: 38px;
+            border-bottom: 2px solid #efefef;
+        }
+        .right{
+            width: 50%;
+            height: 38px;
+            border-bottom: 2px solid #efefef;
+            position: relative;
+            span{
+                background: red;
+                width: 20px;
+                height: 20px;
+                display: block;
+                border-radius: 50%;
+                line-height: 20px;
+                color: #fff;
+                right: 30px;
+                top: 8px;
+                position: absolute;
+            }
+        }
+        .on{
+            border-bottom: 2px solid #00C5CD;
+        }
+    }
+}
+
+/*发布*/
+.publish{
+    select{
+        display: block;
+        width: 300px;
+        height: 30px;
+        margin: 0 auto;
+        border-radius: 10px;
+        border:1px solid #00C5CD;
+        padding: 0 20px;
+    }
+    input{
+        display: block;
+        width: 260px;
+        height: 30px;
+        margin: 0 auto;
+        border-radius: 10px;
+        border:1px solid #00C5CD;
+        padding: 0 20px;
+    }
+    textarea{
+        display: block;
+        border-radius: 10px;
+        width: 260px;
+        height: 260px;
+        border:1px solid #00C5CD;
+        padding: 20px 20px;
+        margin-top: 30px;
+        margin: 0 auto;
+    }
+    .btn{
+        width: 300px;
+        height: 30px;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 30px;
+        background: #00C5CD;
+        margin: 0 auto;
+        margin-top: 30px;
+        color: #fff;
+    }
+    p{
+        display: block;
+        width: 300px;
+        margin: 0 auto;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+}

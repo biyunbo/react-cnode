@@ -18,3 +18,6 @@ export const getUser = (id) => async (dispatch, getState) =>{
 		console.log('error: ', error)
 	}
 }
+
+
+

@@ -94,7 +94,7 @@ export class Nologin extends React.Component {
     render() {
         return(
             <div className="nologin">
-                您还未登录，<Link to="/Login">去登录~</Link>
+                您还未登录，<Link to="/Userview">去登录~</Link>
             </div>
         )
     }

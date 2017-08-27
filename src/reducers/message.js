@@ -1,20 +1,24 @@
 let Initialization = {
 	data : [],
+	num : 0,
 	tab : 1
 }
 
-export function user(state = Initialization , action) {
+export function message(state = Initialization , action) {
 	switch (action.type) {
-		case 'USER_CENTER':
+		case 'MESSAGE_CENTER':
 			return Object.assign({},state,{
 				data : action.data
 			})
-		case 'SET_TAB':
+		case 'SET_TABM':
 			return Object.assign({},state,{
 				tab : action.tab
+			})
+		case 'MESSAGE_NUM':
+			return Object.assign({},state,{
+				mum : action.mun
 			})
 		default:
 			return state
 	}
 }
-
