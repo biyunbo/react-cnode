@@ -21,9 +21,10 @@ yarn start(开发环境访问：http://localhost:8888/)
 5.消息
 </code></pre>
 <h3>效果图</h3>
-<pre><code>
-<img src="https://github.com/biyunbo/react-cnode/show/shouyeliebiao.png"/>
-<img src="https://github.com/biyunbo/react-cnode/show/shouyeliebiao.png"/>
-<img src="https://github.com/biyunbo/react-cnode/show/shouyeliebiao.png"/>
-<img src="https://github.com/biyunbo/react-cnode/show/shouyeliebiao.png"/>
-</code></pre>
+![截图](https://github.com/biyunbo/react-cnode/raw/master/show/shouyeliebiao.png)
+![截图](https://github.com/biyunbo/react-cnode/raw/master/show/xiangqing.png)
+![截图](https://github.com/biyunbo/react-cnode/raw/master/show/fabu.png)
+![截图](https://github.com/biyunbo/react-cnode/raw/master/show/gerenzhongxin.png)
+![截图](https://github.com/biyunbo/react-cnode/raw/master/show/xiaoxi.png)
+![截图](https://github.com/biyunbo/react-cnode/raw/master/show/denglu.png)
+
