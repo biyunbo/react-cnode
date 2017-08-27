@@ -21,7 +21,7 @@ yarn start(开发环境访问：http://localhost:8888/)
 4.发布主题
 5.消息
 ```
-### 效果图
+### 效果图(样式是自己写的。。。。略丑哈哈哈哈)
 ![截图](https://github.com/biyunbo/react-cnode/raw/master/show/shouyeliebiao.png)
 ![截图](https://github.com/biyunbo/react-cnode/raw/master/show/xiangqing.png)
 ![截图](https://github.com/biyunbo/react-cnode/raw/master/show/fabu.png)
