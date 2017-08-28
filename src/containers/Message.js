@@ -62,15 +62,15 @@ class Main extends React.Component {
 		if(tab == 2 ){
 			cright+=" on"
 		}
-
+		console.log(num)
 		return(
-			<div className="message">
+			<div className="main-z message">
 				<div className="top">
 					<div className={cleft} onClick={() => { this.props.setTabm(1) } }>
 						已读消息
 					</div>
 					<div className={cright} onClick={() => { this.props.setTabm(2), this.props.postMessage(this.props.global.accesstoken)} }>
-						未读消息{num>0&&<span>{num}</span>}
+						未读消息{{num}>0&&<span>{num}</span>}
 					</div>
 				</div>
 				{
