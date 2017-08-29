@@ -16,7 +16,7 @@ export function message(state = Initialization , action) {
 			})
 		case 'MESSAGE_NUM':
 			return Object.assign({},state,{
-				mum : action.mun
+				num : action.num
 			})
 		default:
 			return state

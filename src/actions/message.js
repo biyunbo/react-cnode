@@ -18,7 +18,8 @@ export const postMessage = (accesstoken) => async (dispatch,getState) =>{
 export const getMessagecount = (accesstoken) => async (dispatch,getState) =>{
 	try {
 		let response = await instance.get(`message/count/?accesstoken=${accesstoken}`)
-		await dispatch(messageNum(response.data))
+		await dispatch(messageNum(response.data.data))
+		console.log(response.data.data)
 	} catch(error) {
 		console.log('error: ', error)
 	}
