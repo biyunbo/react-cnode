@@ -26,12 +26,12 @@ var plugins = [
             'NODE_ENV': JSON.stringify(nodeEnv)
         }
     })
-    // ,
-    // new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-    //     filename: path.join(__dirname, './index.html'), //生成的html存放路径
-    //     template: 'template/index.html', //html模板路径
-    //     hash: false,    //为静态资源生成hash值
-    // })
+    ,
+    new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
+        filename: path.join(__dirname, './index.html'), //生成的html存放路径
+        template: 'template/index.html', //html模板路径
+        hash: true,    //为静态资源生成hash值
+    })
 ]
 
 var app = ['./entry'];
