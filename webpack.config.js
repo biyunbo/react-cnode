@@ -72,7 +72,7 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'build'),
-        publicPath: isPro ? './build/' : '/build/',
+        publicPath: isPro ? './build/' : './build/',
         chunkFilename: '[name].js'
     },
     // BASE_URL是全局的api接口访问地址
@@ -107,7 +107,7 @@ module.exports = {
             })
         }, {
             test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-            use: ['url-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]']
+            use: ['url-loader?limit=8000&name=files/[md5:hash:base64:10].[ext]']
         }]
     },
     devServer: {
