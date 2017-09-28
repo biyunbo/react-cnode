@@ -1,13 +1,20 @@
 # react-cnode
 基于webpack2 + react + react-router4 + redux + less + ES6 的React版cnode社区
 ------------------------------------------------------------------
+
+项目网站[cnode中文社区](http://cnode.byb224.top)
+
+手机端扫描二维码
+
+![cnode](https://github.com/biyunbo/react-cnode/raw/master/show/cnode.png)
+
 ### 下载
 ```
 git clone https://github.com/biyunbo/react-cnode.git
 cd react-cnode
 npm install yarn -g(如果没有yarn)
 yarn(安装依赖)
-``` 
+```
 
 ### 启动
 ```
